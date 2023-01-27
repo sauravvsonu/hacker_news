@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "materialize-css/dist/css/materialize.min.css";
 import M from "materialize-css/dist/js/materialize.min.js";
-import { useNavigate, useParams } from "react-router";
+import {  useParams } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ page, query }) => {
   const [searchValue, setSearchValue] = useState("");

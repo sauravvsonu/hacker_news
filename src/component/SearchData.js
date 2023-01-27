@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Style.css";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 function SearchData(prop) {
   const [urlh, seturlh] = useState("");
@@ -49,7 +49,7 @@ function SearchData(prop) {
   };
 
   const authorpage = (pg) => {
-    navigate(`/item/${pg}`);
+    navigate(`/author/${pg}`);
   };
 
   return (

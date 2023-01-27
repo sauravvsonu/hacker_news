@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Style.css";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 function SearchComment(prop) {
   const [urlh, seturlh] = useState("");
@@ -43,7 +43,7 @@ function SearchComment(prop) {
   };
 
   const authorpage = (pg) => {
-    navigate(`/item/${pg}`);
+    navigate(`/author/${pg}`);
   };
 
   return (

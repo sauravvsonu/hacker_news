@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 function NewsData(stories) {
   const [urlh, seturlh] = useState("");
@@ -45,7 +45,7 @@ function NewsData(stories) {
   };
 
   const authorpage = (pg) => {
-    navigate(`/item/${pg}`);
+    navigate(`/author/${pg}`);
   };
 
   return (
@@ -65,21 +65,18 @@ function NewsData(stories) {
           <div className="card-action">
             <a
               style={{ cursor: "pointer" }}
-              href="#"
               onClick={() => itempage(stories.stories.objectID)}
             >
               {stories.stories.points} points
             </a>{" "}
             <a
               style={{ cursor: "pointer" }}
-              href="#"
               onClick={() => authorpage(stories.stories.author)}
             >
               by {stories.stories.author}
             </a>{" "}
             <a
               style={{ cursor: "pointer" }}
-              href="#"
               onClick={() => itempage(stories.stories.objectID)}
             >
               {timeSince(stories.stories.created_at)} |{" "}

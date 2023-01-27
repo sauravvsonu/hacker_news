@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router";
+import {  useParams } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const CommentPage = ({ storyId }) => {
   const [comment, setComment] = useState([]);
