@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 function NewsData(stories) {
   const [urlh, seturlh] = useState("");
+  let navigate = useNavigate();
 
   useEffect(() => {
     const url = stories.stories.url;
@@ -37,6 +39,15 @@ function NewsData(stories) {
       return diffMinutes + " minutes ago";
     }
   };
+
+  const itempage = (pg) => {
+    navigate(`/item/${pg}`);
+  };
+
+  const authorpage = (pg) => {
+    navigate(`/item/${pg}`);
+  };
+
   return (
     <div>
       <div className="card horizontal">
@@ -54,19 +65,22 @@ function NewsData(stories) {
           <div className="card-action">
             <a
               style={{ cursor: "pointer" }}
-              href={`/item/${stories.stories.objectID}`}
+              href="#"
+              onClick={() => itempage(stories.stories.objectID)}
             >
               {stories.stories.points} points
             </a>{" "}
             <a
               style={{ cursor: "pointer" }}
-              href={`/author/${stories.stories.author}`}
+              href="#"
+              onClick={() => authorpage(stories.stories.author)}
             >
               by {stories.stories.author}
             </a>{" "}
             <a
               style={{ cursor: "pointer" }}
-              href={`/item/${stories.stories.objectID}`}
+              href="#"
+              onClick={() => itempage(stories.stories.objectID)}
             >
               {timeSince(stories.stories.created_at)} |{" "}
               {stories.stories.num_comments} comments

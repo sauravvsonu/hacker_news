@@ -12,7 +12,7 @@ const AuthorPage = () => {
     const fetchData = async () => {
       const result = await axios(`http://hn.algolia.com/api/v1/users/${id}`);
       setUser(result.data);
-    //   console.log(result.data);
+      //   console.log(result.data);
     };
     fetchData();
   }, [id]);

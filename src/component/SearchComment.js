@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Style.css";
+import { useNavigate } from "react-router";
 
 function SearchComment(prop) {
   const [urlh, seturlh] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (prop.stories.story_url) {
@@ -35,6 +37,15 @@ function SearchComment(prop) {
       return diffMinutes + " minutes ago";
     }
   };
+
+  const itempage = (pg) => {
+    navigate(`/item/${pg}`);
+  };
+
+  const authorpage = (pg) => {
+    navigate(`/item/${pg}`);
+  };
+
   return (
     <div>
       <div className="card horizontal">
@@ -59,19 +70,22 @@ function SearchComment(prop) {
           <div className="card-action">
             <a
               style={{ cursor: "pointer" }}
-              href={`/item/${prop.stories.objectID}`}
+              href="#"
+              onClick={() => itempage(prop.stories.objectID)}
             >
               {prop.stories.points} points
             </a>{" "}
             <a
               style={{ cursor: "pointer" }}
-              href={`/author/${prop.stories.author}`}
+              href="#"
+              onClick={() => authorpage(prop.stories.author)}
             >
               by {prop.stories.author}
             </a>{" "}
             <a
               style={{ cursor: "pointer" }}
-              href={`/item/${prop.stories.objectID}`}
+              href="#"
+              onClick={() => itempage(prop.stories.objectID)}
             >
               {timeSince(prop.stories.created_at)}
             </a>

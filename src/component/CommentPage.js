@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 const CommentPage = ({ storyId }) => {
   const [comment, setComment] = useState([]);
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
+  let navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,6 +44,10 @@ const CommentPage = ({ storyId }) => {
     }
   };
 
+  const redirectAuthorPage = (cmt) => {
+    navigate(`/author/${cmt}`);
+  };
+
   const childComment = (cmt) => {
     return (
       <div
@@ -61,7 +66,11 @@ const CommentPage = ({ storyId }) => {
             color: "gray",
           }}
         >
-          <a href={`/author/${cmt.author}`} style={{ color: "#9e9e9e" }}>
+          <a
+            href="#"
+            style={{ color: "#9e9e9e" }}
+            onClick={() => redirectAuthorPage(cmt.author)}
+          >
             <span>by {cmt.author}</span>
           </a>{" "}
           |<span> {timeSince(cmt.created_at)}</span>
@@ -109,8 +118,9 @@ const CommentPage = ({ storyId }) => {
               <div style={{ height: "5rem" }}>
                 <div className="right" style={{ display: "block" }}>
                   <a
-                    href={`/author/${comment.author}`}
+                    href="#"
                     style={{ color: "black", opacity: "0.9" }}
+                    onClick={() => redirectAuthorPage(comment.author)}
                   >
                     <p>
                       by {comment.author} | {timeSince(comment.created_at)}
